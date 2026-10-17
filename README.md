@@ -51,3 +51,131 @@ We have a Heart Disease prediction dataset with a single table which has the fol
 ```
 
 The model will now have enough context to generate SQL queries for your prompts.
+
+
+
+# Prompts for Data Querying
+
+## Age Distribution
+
+Consider the following prompt.
+
+**Prompt (HTML)**
+
+```html
+Write an SQL query to find the minimum, maximum, and average age of patients in the dataset.
+```
+
+You can expect to the see the following query in response.
+
+**SQL Query**
+
+```sql
+SELECT 
+    MIN(age) AS min_age,
+    MAX(age) AS max_age,
+    AVG(age) AS avg_age
+FROM heart_disease_prediction_dataset;
+```
+
+## Gender Analysis
+
+Consider the following prompt.
+
+**Prompt (HTML)**
+
+```html
+Write and SQL query to count the number of male and female patients in the dataset.
+```
+
+You can expect to the see the following query in response.
+
+**SQL Query**
+
+```sql
+SELECT
+  SUM(CASE WHEN gender = 1 THEN 1 ELSE 0 END) AS male_count,
+  SUM(CASE WHEN gender = 0 THEN 1 ELSE 0 END) AS female_count
+FROM heart_disease_prediction_dataset;
+```
+
+## Chest Pain Type Frequency
+
+Consider the following prompt.
+
+**Prompt (HTML)**
+
+```html
+Write an SQL query to determine the frequency of each type of chest pain (typical angina, atypical angina, non-anginal pain, asymptomatic) among patients.
+```
+
+You can expect the following query to be generated.
+
+**SQL Query**
+
+```sql
+SELECT
+  CASE cp
+    WHEN 1 THEN 'typical_angina'
+    WHEN 2 THEN 'atypical_angina'
+    WHEN 3 THEN 'non_anginal_pain'
+    WHEN 4 THEN 'asymptomatic'
+    ELSE 'unknown'
+  END AS chest_pain_type,
+  COUNT(*) AS frequency
+FROM your_table_name
+GROUP BY
+  CASE cp
+    WHEN 1 THEN 'typical_angina'
+    WHEN 2 THEN 'atypical_angina'
+    WHEN 3 THEN 'non_anginal_pain'
+    WHEN 4 THEN 'asymptomatic'
+    ELSE 'unknown'
+  END
+ORDER BY frequency DESC;
+```
+
+## Age Group Analysis and Target Variable
+
+Consider the following prompt.
+
+**Prompt (HTML)**
+
+```html
+Write an SQL query to investigate the distribution of the target variable (presence or absence of heart disease) within different age groups (e.g., 20-30, 30-40, etc.).
+```
+
+You can expect the following output.
+
+**SQL Query**
+
+```sql
+SELECT
+  CASE
+    WHEN age IS NULL THEN 'Unknown'
+    WHEN age >= 20 AND age < 30 THEN '20-29'
+    WHEN age >= 30 AND age < 40 THEN '30-39'
+    WHEN age >= 40 AND age < 50 THEN '40-49'
+    WHEN age >= 50 AND age < 60 THEN '50-59'
+    WHEN age >= 60 AND age < 70 THEN '60-69'
+    WHEN age >= 70 AND age < 80 THEN '70-79'
+    ELSE '80+'
+  END AS age_group,
+  num AS heart_disease_status,
+  COUNT(*) AS count
+FROM your_table_name
+GROUP BY
+  CASE
+    WHEN age IS NULL THEN 'Unknown'
+    WHEN age >= 20 AND age < 30 THEN '20-29'
+    WHEN age >= 30 AND age < 40 THEN '30-39'
+    WHEN age >= 40 AND age < 50 THEN '40-49'
+    WHEN age >= 50 AND age < 60 THEN '50-59'
+    WHEN age >= 60 AND age < 70 THEN '60-69'
+    WHEN age >= 70 AND age < 80 THEN '70-79'
+    ELSE '80+'
+  END,
+  num
+ORDER BY age_group, heart_disease_status;
+```
+
