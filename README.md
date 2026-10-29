@@ -1,22 +1,21 @@
-# Generative-AI-for-Querying-Databases
-Processed data can be retrieved from database tables using queries. Writing efficient queries is an essential skill for data professionals. In this hands-on lab, Generative AI platforms are used to create optimized queries by providing the model with sufficient context.
+# A Hands-on Project: Generative AI for Querying Databases
+Processed data can be retrieved from database tables using queries. Writing efficient queries is an essential skill for data professionals. 
 
-## Objective(s)
+## Objective
 
-By the end of this lab, you'll be able to prompt a Generative AI model to create efficient queries for your data set.
+Prompt a Generative AI model to create efficient queries for the given data set.
 ## The data set
 
-For the purpose of this lab, you are making use of the [**Heart Disease Data set**](https://archive.ics.uci.edu/dataset/45/heart+disease "Heart Disease Dataset") from the UCI ML library, available publically under the [**CCA 4.0 International**](https://creativecommons.org/licenses/by/4.0/legalcode "CCA 4.0 International") license.
+For the purpose of this project, we are making use of the [**Heart Disease Data set**](https://archive.ics.uci.edu/dataset/45/heart+disease "Heart Disease Dataset") from the UCI ML library, available publically under the [**CCA 4.0 International**](https://creativecommons.org/licenses/by/4.0/legalcode "CCA 4.0 International") license.
 
-You can download the data set and run the queries generated in this lab using any SQL querying system.
+We can download the data set and run the queries generated in this project using any SQL querying system.
 
 # Giving the context
 
-You might note that there is a section named **`Prompt Instructions`** on the Generative AI interface.
 
-If you provide the model with the description of your data, you can generate efficient and readily usable queries for fetching the data based on your requirements.
+If we provide the model with the description of our data, we can generate efficient and readily usable queries for fetching the data based on your requirements.
 
-Paste the following text in the prompt instructions to give the model the appropriate context for the data.
+ Prompt the following instruction to give the model the appropriate context for the data.
 
 **html**
 
@@ -50,7 +49,7 @@ We have a Heart Disease prediction dataset with a single table which has the fol
         -- Value 1: > 50% diameter narrowing
 ```
 
-The model will now have enough context to generate SQL queries for your prompts.
+The model will now have enough context to generate SQL queries for our prompts.
 
 
 
