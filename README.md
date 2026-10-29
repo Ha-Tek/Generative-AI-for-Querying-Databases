@@ -21,7 +21,7 @@ If we provide the model with the description of our data, we can generate effici
  Prompt the following instruction to give the model the appropriate context for the data.
 
 
-```html
+###  Prompt
 We have a Heart Disease prediction dataset with a single table which has the following attributes.
 1. age - age in years
 2. gender- gender (1 = male; 0 = female)
@@ -49,7 +49,7 @@ We have a Heart Disease prediction dataset with a single table which has the fol
 14. num (the predicted attribute) - diagnosis of heart disease (angiographic disease status)
         -- Value 0: < 50% diameter narrowing
         -- Value 1: > 50% diameter narrowing
-```
+
 
 The model (I used GPT-6) will now have enough context to generate SQL queries for our prompts.
 
@@ -57,167 +57,62 @@ The model (I used GPT-6) will now have enough context to generate SQL queries fo
 
 # Prompts for Data Querying
 
-## Age Distribution
-
-Consider the following prompt.
-
-**Prompt **
-
-```html
-Write an SQL query to find the minimum, maximum, and average age of patients in the dataset.
-```
-
-You can expect to  see the following query in response.
-
-**SQL Query**
-
-```sql
-SELECT 
-    MIN(age) AS min_age,
-    MAX(age) AS max_age,
-    AVG(age) AS avg_age
-FROM heart_disease_prediction_dataset;
-```
-
-## Gender Analysis
-
-Consider the following prompt.
-
-**Prompt**
-
-```html
-Write and SQL query to count the number of male and female patients in the dataset.
-```
-
-We can expect to  see the following query in response.
-
-**SQL Query**
-
-```sql
-SELECT
-  SUM(CASE WHEN gender = 1 THEN 1 ELSE 0 END) AS male_count,
-  SUM(CASE WHEN gender = 0 THEN 1 ELSE 0 END) AS female_count
-FROM heart_disease_prediction_dataset;
-```
-
-## Chest Pain Type Frequency
-
-Consider the following prompt.
-
-**Prompt**
-
-```html
-Write an SQL query to determine the frequency of each type of chest pain (typical angina, atypical angina, non-anginal pain, asymptomatic) among patients.
-```
-
-We can expect the following query to be generated.
-
-**SQL Query**
-
-```sql
-SELECT
-  CASE cp
-    WHEN 1 THEN 'typical_angina'
-    WHEN 2 THEN 'atypical_angina'
-    WHEN 3 THEN 'non_anginal_pain'
-    WHEN 4 THEN 'asymptomatic'
-    ELSE 'unknown'
-  END AS chest_pain_type,
-  COUNT(*) AS frequency
-FROM your_table_name
-GROUP BY
-  CASE cp
-    WHEN 1 THEN 'typical_angina'
-    WHEN 2 THEN 'atypical_angina'
-    WHEN 3 THEN 'non_anginal_pain'
-    WHEN 4 THEN 'asymptomatic'
-    ELSE 'unknown'
-  END
-ORDER BY frequency DESC;
-```
-
-## Age Group Analysis and Target Variable
-
-Consider the following prompt.
-
-**Prompt (HTML)**
-
-```html
-Write an SQL query to investigate the distribution of the target variable (presence or absence of heart disease) within different age groups (e.g., 20-30, 30-40, etc.).
-```
-
-We can expect the following output.
-
-**SQL Query**
-
-```sql
-SELECT
-  CASE
-    WHEN age IS NULL THEN 'Unknown'
-    WHEN age >= 20 AND age < 30 THEN '20-29'
-    WHEN age >= 30 AND age < 40 THEN '30-39'
-    WHEN age >= 40 AND age < 50 THEN '40-49'
-    WHEN age >= 50 AND age < 60 THEN '50-59'
-    WHEN age >= 60 AND age < 70 THEN '60-69'
-    WHEN age >= 70 AND age < 80 THEN '70-79'
-    ELSE '80+'
-  END AS age_group,
-  num AS heart_disease_status,
-  COUNT(*) AS count
-FROM your_table_name
-GROUP BY
-  CASE
-    WHEN age IS NULL THEN 'Unknown'
-    WHEN age >= 20 AND age < 30 THEN '20-29'
-    WHEN age >= 30 AND age < 40 THEN '30-39'
-    WHEN age >= 40 AND age < 50 THEN '40-49'
-    WHEN age >= 50 AND age < 60 THEN '50-59'
-    WHEN age >= 60 AND age < 70 THEN '60-69'
-    WHEN age >= 70 AND age < 80 THEN '70-79'
-    ELSE '80+'
-  END,
-  num
-ORDER BY age_group, heart_disease_status;
-```
-
-
-## Another Prompts for Data Querying
-
 Use these practice prompts to develop and test SQL queries, explore the dataset, and gain insights into the characteristics of patients with and without heart disease.
 
-### 1. Cholesterol Range
+### 1. Age Distribution
+
+
+Write an SQL query to find the minimum, maximum, and average age of patients in the dataset.
+
+
+
+### 2. Gender Analysis
+
+
+Write and SQL query to count the number of male and female patients in the dataset.
+
+### 3. Chest Pain Type Frequency
+
+Write an SQL query to determine the frequency of each type of chest pain (typical angina, atypical angina, non-anginal pain, asymptomatic) among patients.
+
+### 4. Age Group Analysis and Target Variable
+
+Write an SQL query to investigate the distribution of the target variable (presence or absence of heart disease) within different age groups (e.g., 20-30, 30-40, etc.).
+
+
+### 5. Cholesterol Range
 
 Find the minimum and maximum cholesterol levels among patients.
 
-### 2. Age Range and Gender Analysis
+### 6. Age Range and Gender Analysis
 
 Determine the youngest and oldest ages for male and female patients separately.
 
-### 3. Age Group Analysis and Target Variable
+### 7. Age Group Analysis and Target Variable
 
 Investigate the distribution of the target variable (presence or absence of heart disease) across different age groups (e.g., 20–30, 30–40, etc.).
 
-### 4. Maximum Heart Rate by Age Group
+### 8. Maximum Heart Rate by Age Group
 
 Find the maximum heart rate achieved during exercise for different age groups (e.g., 30–40, 40–50, etc.).
 
-### 5. Percentage of Patients with High Blood Sugar
+### 9. Percentage of Patients with High Blood Sugar
 
 Calculate the percentage of patients with fasting blood sugar greater than 120 mg/dL.
 
-### 6. Ratio of Patients with Resting Electrocardiographic Abnormalities
+### 10. Ratio of Patients with Resting Electrocardiographic Abnormalities
 
 Find the ratio of patients with abnormal resting electrocardiographic results to those with normal results.
 
-### 7. Number of Patients with Reversible Thalassemia
+### 11. Number of Patients with Reversible Thalassemia
 
 Count the number of patients with reversible thalassemia detected through thallium stress testing.
 
-### 8. Average Age of Patients with Chest Pain
+### 12. Average Age of Patients with Chest Pain
 
 Calculate the average age of patients who experienced chest pain during diagnosis.
 
-### 9. Distribution of Patients by Number of Major Vessels
+### 13. Distribution of Patients by Number of Major Vessels
 
 Investigate the distribution of patients based on the number of major blood vessels colored by fluoroscopy (0–3).
 
