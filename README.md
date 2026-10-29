@@ -1,7 +1,7 @@
 # A Hands-on Project: Generative AI for Querying Databases
 Processed data can be retrieved from database tables using queries. Writing efficient queries is an essential skill for data professionals. 
 
-Source: [Coursera](https://www.coursera.org/learn/generative-ai-elevate-your-data-science-career/ungradedLti/0w6yM/hands-on-lab-generative-ai-for-querying-databases)
+Source: [Learning from Coursera](https://www.coursera.org/learn/generative-ai-elevate-your-data-science-career/ungradedLti/0w6yM/hands-on-lab-generative-ai-for-querying-databases)
 
 ## Objective
 
