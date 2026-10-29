@@ -145,7 +145,7 @@ Consider the following prompt.
 Write an SQL query to investigate the distribution of the target variable (presence or absence of heart disease) within different age groups (e.g., 20-30, 30-40, etc.).
 ```
 
-You can expect the following output.
+We can expect the following output.
 
 **SQL Query**
 
