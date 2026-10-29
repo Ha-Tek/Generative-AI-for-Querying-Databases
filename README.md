@@ -1,6 +1,8 @@
 # A Hands-on Project: Generative AI for Querying Databases
 Processed data can be retrieved from database tables using queries. Writing efficient queries is an essential skill for data professionals. 
 
+Source: [Coursera](https://www.coursera.org/learn/generative-ai-elevate-your-data-science-career/ungradedLti/0w6yM/hands-on-lab-generative-ai-for-querying-databases)
+
 ## Objective
 
 Prompt a Generative AI model to create efficient queries for the given data set.
@@ -17,7 +19,6 @@ If we provide the model with the description of our data, we can generate effici
 
  Prompt the following instruction to give the model the appropriate context for the data.
 
-**html**
 
 ```html
 We have a Heart Disease prediction dataset with a single table which has the following attributes.
@@ -49,7 +50,7 @@ We have a Heart Disease prediction dataset with a single table which has the fol
         -- Value 1: > 50% diameter narrowing
 ```
 
-The model will now have enough context to generate SQL queries for our prompts.
+The model (I used GPT-6) will now have enough context to generate SQL queries for our prompts.
 
 
 
@@ -59,7 +60,7 @@ The model will now have enough context to generate SQL queries for our prompts.
 
 Consider the following prompt.
 
-**Prompt (HTML)**
+**Prompt **
 
 ```html
 Write an SQL query to find the minimum, maximum, and average age of patients in the dataset.
@@ -81,13 +82,13 @@ FROM heart_disease_prediction_dataset;
 
 Consider the following prompt.
 
-**Prompt (HTML)**
+**Prompt**
 
 ```html
 Write and SQL query to count the number of male and female patients in the dataset.
 ```
 
-You can expect to the see the following query in response.
+We can expect to  see the following query in response.
 
 **SQL Query**
 
@@ -102,13 +103,13 @@ FROM heart_disease_prediction_dataset;
 
 Consider the following prompt.
 
-**Prompt (HTML)**
+**Prompt**
 
 ```html
 Write an SQL query to determine the frequency of each type of chest pain (typical angina, atypical angina, non-anginal pain, asymptomatic) among patients.
 ```
 
-You can expect the following query to be generated.
+We can expect the following query to be generated.
 
 **SQL Query**
 
@@ -177,4 +178,46 @@ GROUP BY
   num
 ORDER BY age_group, heart_disease_status;
 ```
+
+
+## Another Prompts for Data Querying
+
+Use these practice prompts to develop and test SQL queries, explore the dataset, and gain insights into the characteristics of patients with and without heart disease.
+
+### 1. Cholesterol Range
+
+Find the minimum and maximum cholesterol levels among patients.
+
+### 2. Age Range and Gender Analysis
+
+Determine the youngest and oldest ages for male and female patients separately.
+
+### 3. Age Group Analysis and Target Variable
+
+Investigate the distribution of the target variable (presence or absence of heart disease) across different age groups (e.g., 20–30, 30–40, etc.).
+
+### 4. Maximum Heart Rate by Age Group
+
+Find the maximum heart rate achieved during exercise for different age groups (e.g., 30–40, 40–50, etc.).
+
+### 5. Percentage of Patients with High Blood Sugar
+
+Calculate the percentage of patients with fasting blood sugar greater than 120 mg/dL.
+
+### 6. Ratio of Patients with Resting Electrocardiographic Abnormalities
+
+Find the ratio of patients with abnormal resting electrocardiographic results to those with normal results.
+
+### 7. Number of Patients with Reversible Thalassemia
+
+Count the number of patients with reversible thalassemia detected through thallium stress testing.
+
+### 8. Average Age of Patients with Chest Pain
+
+Calculate the average age of patients who experienced chest pain during diagnosis.
+
+### 9. Distribution of Patients by Number of Major Vessels
+
+Investigate the distribution of patients based on the number of major blood vessels colored by fluoroscopy (0–3).
+
 
