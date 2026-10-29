@@ -11,6 +11,7 @@ Prompt a Generative AI model to create efficient queries for the given data set.
 For the purpose of this project, we are making use of the [**Heart Disease Data set**](https://archive.ics.uci.edu/dataset/45/heart+disease "Heart Disease Dataset") from the UCI ML library, available publically under the [**CCA 4.0 International**](https://creativecommons.org/licenses/by/4.0/legalcode "CCA 4.0 International") license.
 
 We can download the data set and run the queries generated in this project using any SQL querying system.
+However, for the SQL practice prompts I am listing below, I will use SQLite with Python in Google Colab.  We can write and execute SQL queries directly in Google Colab or Jupyter Notebook without installing a separate database server.
 
 # Giving the context
 
@@ -66,7 +67,7 @@ Consider the following prompt.
 Write an SQL query to find the minimum, maximum, and average age of patients in the dataset.
 ```
 
-You can expect to the see the following query in response.
+You can expect to  see the following query in response.
 
 **SQL Query**
 
